@@ -26,6 +26,7 @@ app.use(session({secret:'bewithyou'}));// session secret
 app.get("/", function (req, res) {
 
     if (req.session.user) {
+    	console.log(req.session.user.username+" "+"logged in");
         res.send("Welcome " + req.session.user.username + "<br>" + "<a href='/logout'>logout</a>");
     } else {
         res.send("<a href='/login'> Login</a>" + "<br>" + "<a href='/signup'> Sign Up</a>");
@@ -80,7 +81,7 @@ app.post('/signup',function(req,res){
 app.post('/login',function(req,res){
 	if(req.body.username && req.body.password ){
  var pass = req.body.password;
- console.log(req.body.password);
+
   var name = req.body.username;
   User.findOne({'username':name,password:pass}, function (err, users) {
               if (err) {
@@ -91,7 +92,7 @@ app.post('/login',function(req,res){
               			res.send("check your username or password");
               			
               		}else{
-              			console.log("found"+users);
+              			
               			 req.session.regenerate(function () {
 
                 req.session.user = users;
