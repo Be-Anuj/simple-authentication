@@ -1,0 +1,17 @@
+{
+  "name": "Simple Authentication",
+  "version": "1.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "dependencies": {
+    "express": "*",
+    "nodemon": "*",
+    "mongoose" : "*",
+    "body-parser":"*",
+    "express-session":"*",
+    "jade": "*",
+    "path":"*"
+  }
+}
